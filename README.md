@@ -1,8 +1,6 @@
-## Thejoeun Academy Project
+## Spring, Java를 활용한 Web Project
 
-- Summary Spring boot , Java , MySQL 을 활용한 Web 프로젝트 입니다.
+- Roast Bean: 마이페이지, 상품구매, 커피 커뮤니티, 고객센터 등의 기능이 포함된 Web
+- MVC 패턴으로 만든 웹을 Spring방식으로 변환 / 기능 Upgade
 
-- Web name: Roast Bean
-
-
-Copyrighted by sangwonKim7
+/copyrighted by sangwonKim7
