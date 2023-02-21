@@ -6,27 +6,32 @@
 <mapper namespace="com.rb.base.dao.SignupDao">
 
 	<select id="checkId" resultType="int">
-		SELECT count(*) from user where user_id = #{user_id}
-	</select>
-	
-	<select id="checkNick" resultType="int">
-		SELECT count(*) from user where user_nick = #{user_nick}
+		SELECT count(*) from user WHERE
+		user_id = #{user_id}
 	</select>
 
+	<select id="checkNick" resultType="int">
+		SELECT count(*) from user
+		WHERE user_nick = #{user_nick}
+	</select>
 
 	<select id="signupAction">
 		INSERT INTO user (user_id, user_name, user_nick, user_pw, user_telno,
-		user_email, user_birthday, user_gender, user_addresszipcode,
-		user_address1, user_address2, user_address3, user_initdate)
-		values (#{user_id},#{user_name},#{user_nick},#{user_pw},#{user_telno},#{user_email},#{user_birthday},#{user_gender},#{user_addresszipcode},#{user_address1},#{user_address2},#{user_address3},now())
+			user_email, user_birthday, user_gender, user_addresszipcode,
+			user_address1, user_address2, user_address3, user_initdate)
+		VALUES (#{user_id}, #{user_name}, #{user_nick}, #{user_pw}, #{user_telno},
+			#{user_email}, #{user_birthday}, #{user_gender}, #{user_addresszipcode},
+			#{user_address1}, #{user_address2}, #{user_address3}, now())
 	</select>
 
 	<select id="signupApiAction">
 		INSERT INTO user (user_id, user_name, user_nick, user_telno,
-		user_email, user_birthday, user_gender, user_addresszipcode,
-		user_address1, user_address2, user_address3, user_initdate)
-		values (#{user_id},#{user_name},#{user_nick},#{user_telno},#{user_email},#{user_birthday},#{user_gender},#{user_addresszipcode},#{user_address1},#{user_address2},#{user_address3},now())
+			user_email, user_birthday, user_gender, user_addresszipcode,
+			user_address1, user_address2, user_address3, user_initdate)
+		VALUES (#{user_id}, #{user_name}, #{user_nick},	#{user_telno}, 
+			#{user_email}, #{user_birthday}, #{user_gender}, #{user_addresszipcode},
+			#{user_address1}, #{user_address2}, #{user_address3}, now())
 	</select>
-	
+
 
 </mapper>

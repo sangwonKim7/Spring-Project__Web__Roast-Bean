@@ -52,7 +52,8 @@
 		</choose>
 	</select>
 	
-	<!-- Paging count -->
+	<!-- Date: 2022-11-22, SangwonKim -->
+	<!-- Desc: 전체, 검색요건별 Select -->
 	<select id="qnaSearchAdminRow" resultType="Integer">
 		SELECT count(*) as totalCount from qna_write 
 		WHERE qna_write_deletedate is null and ${query} like #{content}
@@ -62,9 +63,10 @@
 	<select id="qnaSearchAdmin" resultType="com.rb.base.model.QnaDto">
 		SELECT * 
 		FROM (
-			SELECT row_number() over(order by qwc.qna_write_comment_seq is null asc, qna_write_seq asc) as rownum, qw.user_id, 
-				qw.qna_write_category, qw.qna_write_title, qw.qna_write_seq, qw.qna_write_initdate, qw.qna_write_updatedate, qw.qna_write_content, 
-				qwc.qna_write_comment_seq, qwc.qna_write_comment_content, qwc.qna_write_comment_initdate, qwc.qna_write_comment_updatedate 
+			SELECT row_number() over(order by qwc.qna_write_comment_seq is null asc, qna_write_seq asc) as rownum, 
+				qw.user_id, qw.qna_write_category, qw.qna_write_title, qw.qna_write_seq, qw.qna_write_initdate, 
+				qw.qna_write_updatedate, qw.qna_write_content, qwc.qna_write_comment_seq, 
+				qwc.qna_write_comment_content, qwc.qna_write_comment_initdate, qwc.qna_write_comment_updatedate 
 			FROM qna_write qw 
 			LEFT JOIN qna_write_comment qwc 
 				ON qw.qna_write_seq = qwc.qna_write_seq 
@@ -103,7 +105,7 @@
 		VALUES (#{admin_id}, #{qna_write_seq}, #{qna_write_comment_content}, now())
 	</insert>
 	
-	<!-- Cs/ User의 QnA Answer Update -->
+	<!-- Cs/ Admin의 QnA Answer Update -->
 	<update id="adminAnswerUpdate">
 		UPDATE qna_write_comment set qna_write_comment_content = #{qna_write_comment_content}, qna_write_comment_updatedate = now() 
 		WHERE qna_write_seq = #{qna_write_seq}

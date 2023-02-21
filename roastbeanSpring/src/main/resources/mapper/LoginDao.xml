@@ -6,19 +6,21 @@
 <mapper namespace="com.rb.base.dao.LoginDao">
 
 	<select id="loginCheck" resultType="com.rb.base.model.UserDto">
-		SELECT count(*) as count, user_nick from user where user_id = #{user_id} and user_pw = #{user_pw} and user_deletedate is null 
+		SELECT count(*) as count, user_nick from user 
+		WHERE user_id = #{user_id} and user_pw = #{user_pw} and user_deletedate is null 
 	</select>
 	
 	<select id="loginCheckApi" resultType="com.rb.base.model.UserDto">
-		SELECT count(*) as count, user_nick from user where user_id = #{user_id} and user_deletedate is null 
+		SELECT count(*) as count, user_nick from user 
+		WHERE user_id = #{user_id} and user_deletedate is null 
 	</select>
 	
 	<select id="loginCheckAdmin" resultType="int">
-		SELECT count(*) from admin where admin_id = #{admin_id} and admin_pw = #{admin_pw} 
+		SELECT count(*) from admin WHERE admin_id = #{admin_id} and admin_pw = #{admin_pw} 
 	</select>
 	
 	<select id="cartCount" resultType="com.rb.base.model.UserDto">
-		SELECT IFNULL(sum(cart_qty), 0) as cartCount from cart where user_id = #{user_id}
+		SELECT IFNULL(sum(cart_qty), 0) as cartCount from cart WHERE user_id = #{user_id}
 	</select>
 		
 </mapper>
